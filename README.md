@@ -2,7 +2,7 @@
 
 An Electron to-do list app using SQLite3 + React
 
-![alt text](preview.png "Preview")
+![Preview](preview.PNG)
 
 ## Recommended IDE Setup
 
