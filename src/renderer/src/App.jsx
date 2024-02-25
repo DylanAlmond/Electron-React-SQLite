@@ -11,15 +11,19 @@ const App = () => {
   const createTodo = () => {
     const title = titleElem.current.value
     const description = descriptionElem.current.value
-    const dateDue = new Date(dateElem.current.value).toISOString()
+    const dateDue = new Date(dateElem.current.value)
 
-    if (!title || !dateDue) {
+    if (!title || isNaN(dateDue)) {
       return
     }
 
-    console.log(title, description, dateDue)
+    const isoDate = dateDue.toISOString()
 
-    ipcRenderer.send('create-todo', { title, description, dateDue })
+    ipcRenderer.send('create-todo', {
+      title: title,
+      description: description,
+      dateDue: isoDate
+    })
 
     ipcRenderer.send('read-todos')
 
@@ -27,19 +31,24 @@ const App = () => {
   }
 
   const updateTodo = (id) => {
-    if (!id || id < 0) return
+    if (!id) return
 
     const title = titleElem.current.value
     const description = descriptionElem.current.value
-    const dateDue = new Date(dateElem.current.value).toISOString()
+    const dateDue = new Date(dateElem.current.value)
 
-    if (!title || !dateDue) {
+    if (!title || isNaN(dateDue)) {
       return
     }
 
-    console.log(title, description, dateDue)
+    const isoDate = dateDue.toISOString()
 
-    ipcRenderer.send('update-todo', { id, title, description, dateDue })
+    ipcRenderer.send('update-todo', {
+      id: id,
+      title: title,
+      description: description,
+      dateDue: isoDate
+    })
 
     ipcRenderer.send('read-todos')
 
