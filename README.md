@@ -1,6 +1,6 @@
 # electron-react-sqlite
 
-An Electron application with React
+An Electron to-do list app using SQLite3 + React
 
 ## Recommended IDE Setup
 
